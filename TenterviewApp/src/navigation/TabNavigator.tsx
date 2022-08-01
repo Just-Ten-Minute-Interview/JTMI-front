@@ -19,21 +19,23 @@ const TabNavigator = () => {
           tabBarShowLabel: false,
           tabBarStyle: {
             position: 'absolute',
-            bottom: 15,
+            bottom: 10,
             left: 15,
             right: 15,
             backgroundColor: '#ffffff',
             borderRadius: 30,
-            height: 70,
+            height: 60,
             ...styles.shadow,
           },
           headerShown: false,
+          tabBarActiveTintColor: '#12B886',
+          tabBarInactiveTintColor: '#748c94',
         }}>
         <Tab.Screen
           name="Home"
           component={HomeScreen}
           options={{
-            tabBarIcon: ({ focused }) => (
+            tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
                 <Ionicons
                   name="home-sharp"
@@ -41,11 +43,11 @@ const TabNavigator = () => {
                   style={{
                     marginBottom: 5,
                   }}
-                  color={focused ? '#12B886' : '#748c94'}
+                  color={color}
                 />
                 <Text
                   style={{
-                    color: focused ? '#12B886' : '#748c94',
+                    color: color,
                     fontSize: 12,
                   }}>
                   홈
@@ -58,7 +60,7 @@ const TabNavigator = () => {
           name="Bookmark"
           component={BookmarkScreen}
           options={{
-            tabBarIcon: ({ focused }) => (
+            tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
                 <Ionicons
                   name="bookmark"
@@ -66,12 +68,12 @@ const TabNavigator = () => {
                   style={{
                     marginBottom: 5,
                   }}
-                  color={focused ? '#12B886' : '#748c94'}
+                  color={color}
                 />
 
                 <Text
                   style={{
-                    color: focused ? '#12B886' : '#748c94',
+                    color: color,
                     fontSize: 12,
                   }}>
                   북마크
@@ -85,7 +87,7 @@ const TabNavigator = () => {
           name="History"
           component={HistoryScreen}
           options={{
-            tabBarIcon: ({ focused }) => (
+            tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
                 <FontAwesome
                   name="history"
@@ -93,12 +95,12 @@ const TabNavigator = () => {
                   style={{
                     marginBottom: 5,
                   }}
-                  color={focused ? '#12B886' : '#748c94'}
+                  color={color}
                 />
 
                 <Text
                   style={{
-                    color: focused ? '#12B886' : '#748c94',
+                    color: color,
                     fontSize: 12,
                   }}>
                   히스토리
@@ -111,7 +113,7 @@ const TabNavigator = () => {
           name="Setting"
           component={SettingScreen}
           options={{
-            tabBarIcon: ({ focused }) => (
+            tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
                 <Ionicons
                   name="settings"
@@ -119,11 +121,11 @@ const TabNavigator = () => {
                   style={{
                     marginBottom: 5,
                   }}
-                  color={focused ? '#12B886' : '#748c94'}
+                  color={color}
                 />
                 <Text
                   style={{
-                    color: focused ? '#12B886' : '#748c94',
+                    color: color,
                     fontSize: 12,
                   }}>
                   설정
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    top: 5,
+    top: 3,
   },
 });
 
