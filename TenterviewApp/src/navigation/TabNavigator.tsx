@@ -2,10 +2,10 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View } from 'react-native';
-import HomeScreen from '@/screens/HomeScreen';
-import BookmarkScreen from '@/screens/BookmarkScreen';
-import SettingScreen from '@/screens/SettingScreen';
-import HistoryScreen from '@/screens/HistoryScreen';
+import HomeScreen from '@screens/HomeScreen';
+import BookmarkScreen from '@screens/BookmarkScreen';
+import SettingScreen from '@screens/SettingScreen';
+import HistoryScreen from '@screens/HistoryScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -19,7 +19,7 @@ const TabNavigator = () => {
           tabBarShowLabel: false,
           tabBarStyle: {
             position: 'absolute',
-            bottom: 10,
+            bottom: 15,
             left: 15,
             right: 15,
             backgroundColor: '#ffffff',
