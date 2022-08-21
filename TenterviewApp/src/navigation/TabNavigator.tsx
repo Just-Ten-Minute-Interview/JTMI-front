@@ -40,15 +40,13 @@ const TabNavigator = () => {
                 <Ionicons
                   name="home-sharp"
                   size={25}
-                  style={{
-                    marginBottom: 5,
-                  }}
+                  style={styles.icon}
                   color={color}
                 />
                 <Text
                   style={{
                     color: color,
-                    fontSize: 12,
+                    ...styles.iconText,
                   }}>
                   홈
                 </Text>
@@ -65,16 +63,14 @@ const TabNavigator = () => {
                 <Ionicons
                   name="bookmark"
                   size={25}
-                  style={{
-                    marginBottom: 5,
-                  }}
+                  style={styles.icon}
                   color={color}
                 />
 
                 <Text
                   style={{
                     color: color,
-                    fontSize: 12,
+                    ...styles.iconText,
                   }}>
                   북마크
                 </Text>
@@ -92,16 +88,14 @@ const TabNavigator = () => {
                 <FontAwesome
                   name="history"
                   size={25}
-                  style={{
-                    marginBottom: 5,
-                  }}
+                  style={styles.icon}
                   color={color}
                 />
 
                 <Text
                   style={{
                     color: color,
-                    fontSize: 12,
+                    ...styles.iconText,
                   }}>
                   히스토리
                 </Text>
@@ -118,15 +112,13 @@ const TabNavigator = () => {
                 <Ionicons
                   name="settings"
                   size={25}
-                  style={{
-                    marginBottom: 5,
-                  }}
+                  style={styles.icon}
                   color={color}
                 />
                 <Text
                   style={{
                     color: color,
-                    fontSize: 12,
+                    ...styles.iconText,
                   }}>
                   설정
                 </Text>
@@ -154,6 +146,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     top: 3,
+  },
+  icon: {
+    marginBottom: 5,
+  },
+  iconText: {
+    fontSize: 12,
   },
 });
 
