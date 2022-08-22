@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const BookmarkScreen = () => {
+const Bookmark = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Bookmark Screen</Text>
@@ -9,4 +9,4 @@ const BookmarkScreen = () => {
   );
 };
 
-export default BookmarkScreen;
+export default Bookmark;

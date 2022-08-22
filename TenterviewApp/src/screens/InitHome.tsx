@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
+import DefaultText from '~/components/DefaultText';
 
 function InitHome({ navigation }: any) {
   const onPressCategory = useCallback(
@@ -12,11 +12,9 @@ function InitHome({ navigation }: any) {
 
   return (
     <View style={styles.container}>
-      <LinearGradient
-        style={styles.top_section}
-        colors={['#12B886', '#00c362']}>
-        <Text style={styles.top_text}>텐터뷰</Text>
-      </LinearGradient>
+      <View style={styles.top_section}>
+        <DefaultText style={styles.top_text}>텐터뷰</DefaultText>
+      </View>
       <View style={styles.main_section}>
         <View style={styles.box}>
           <Pressable
@@ -29,20 +27,7 @@ function InitHome({ navigation }: any) {
               />
             </View>
             <View style={styles.sub_box_inner_bottom}>
-              <Text style={styles.box_text}>프론트엔드</Text>
-            </View>
-          </Pressable>
-          <Pressable
-            style={styles.sub_box}
-            onPress={() => onPressCategory('CS')}>
-            <View style={styles.sub_box_inner_top}>
-              <Image
-                style={styles.box_image}
-                source={require('@assets/images/top_image.jpg')}
-              />
-            </View>
-            <View style={styles.sub_box_inner_bottom}>
-              <Text style={styles.box_text}>CS</Text>
+              <DefaultText style={styles.box_text}>프론트엔드</DefaultText>
             </View>
           </Pressable>
           <Pressable
@@ -55,9 +40,23 @@ function InitHome({ navigation }: any) {
               />
             </View>
             <View style={styles.sub_box_inner_bottom}>
-              <Text style={styles.box_text}>백엔드</Text>
+              <DefaultText style={styles.box_text}>백엔드</DefaultText>
             </View>
           </Pressable>
+          <Pressable
+            style={styles.sub_box}
+            onPress={() => onPressCategory('CS')}>
+            <View style={styles.sub_box_inner_top}>
+              <Image
+                style={styles.box_image}
+                source={require('@assets/images/top_image.jpg')}
+              />
+            </View>
+            <View style={styles.sub_box_inner_bottom}>
+              <DefaultText style={styles.box_text}>CS</DefaultText>
+            </View>
+          </Pressable>
+
           <Pressable
             style={styles.sub_box}
             onPress={() => onPressCategory('내 히스토리')}>
@@ -68,7 +67,7 @@ function InitHome({ navigation }: any) {
               />
             </View>
             <View style={styles.sub_box_inner_bottom}>
-              <Text style={styles.box_text}>내 히스토리</Text>
+              <DefaultText style={styles.box_text}>내 히스토리</DefaultText>
             </View>
           </Pressable>
         </View>
@@ -77,16 +76,18 @@ function InitHome({ navigation }: any) {
   );
 }
 
-const gap = 30;
+const gap = 20;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#eaffed',
+    backgroundColor: '#fff',
+    paddingRight: 15,
+    paddingLeft: 15,
   },
   top_section: {
     flex: 2,
-    backgroundColor: 'red',
+    paddingTop: 10,
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
     justifyContent: 'center',
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     display: 'flex',
     flexDirection: 'row',
-    marginTop: 10,
+    paddingTop: 20,
   },
   box: {
     flex: 1,
@@ -109,12 +110,11 @@ const styles = StyleSheet.create({
   },
 
   sub_box: {
-    width: 140,
-    height: 140,
+    width: 135,
+    height: 165,
     borderRadius: 25,
     flexGrow: 1,
-    marginLeft: 20,
-    marginRight: 20,
+
     marginHorizontal: gap / 2,
     marginVertical: gap / 2,
     justifyContent: 'center',
@@ -127,10 +127,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    borderWidth: 3,
-    borderColor: '#00c362',
-    borderStyle: 'solid',
-    backgroundColor: '#00c362',
+    backgroundColor: '#fff',
   },
 
   sub_box_inner_top: {
@@ -149,14 +146,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  box_text: { fontSize: 20, fontWeight: '700', color: '#ffffff' },
-
   top_text: {
-    fontSize: 54,
-    color: '#ffffff',
-    fontWeight: '700',
+    fontSize: 40,
+    color: '#00c362',
+    fontWeight: '600',
   },
 
+  box_text: { fontSize: 24, fontWeight: '700', color: '#00c362' },
   box_image: {
     flex: 1,
     resizeMode: 'cover',

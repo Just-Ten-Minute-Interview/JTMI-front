@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import InitHome from '~/components/InitHome';
-import QuestionScreen from '../QuestionScreen';
+import InitHome from '~/screens/InitHome';
+import QuestionScreen from './Question';
 
 const Stack = createNativeStackNavigator();
 
-const HomeScreen = () => {
+const Home = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
@@ -14,9 +14,15 @@ const HomeScreen = () => {
         component={InitHome}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Question" component={QuestionScreen} />
+      <Stack.Screen
+        name="Question"
+        component={QuestionScreen}
+        options={() => ({
+          headerTitle: '',
+        })}
+      />
     </Stack.Navigator>
   );
 };
 
-export default HomeScreen;
+export default Home;

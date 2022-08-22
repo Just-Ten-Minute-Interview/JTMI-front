@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet, Text, View } from 'react-native';
-import HomeScreen from '@screens/HomeScreen';
-import BookmarkScreen from '@screens/BookmarkScreen';
-import SettingScreen from '@screens/SettingScreen';
-import HistoryScreen from '@screens/HistoryScreen';
+import { StyleSheet, View } from 'react-native';
+import Home from '~/screens/Home';
+import Bookmark from '~/screens/Bookmark';
+import Settings from '~/screens/Settings';
+import History from '~/screens/History';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -29,11 +29,11 @@ const TabNavigator = () => {
           },
           headerShown: false,
           tabBarActiveTintColor: '#12B886',
-          tabBarInactiveTintColor: '#748c94',
+          tabBarInactiveTintColor: '#b0f2dd',
         }}>
         <Tab.Screen
           name="Home"
-          component={HomeScreen}
+          component={Home}
           options={{
             tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
@@ -43,20 +43,13 @@ const TabNavigator = () => {
                   style={styles.icon}
                   color={color}
                 />
-                <Text
-                  style={{
-                    color: color,
-                    ...styles.iconText,
-                  }}>
-                  홈
-                </Text>
               </View>
             ),
           }}
         />
         <Tab.Screen
           name="Bookmark"
-          component={BookmarkScreen}
+          component={Bookmark}
           options={{
             tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
@@ -66,14 +59,6 @@ const TabNavigator = () => {
                   style={styles.icon}
                   color={color}
                 />
-
-                <Text
-                  style={{
-                    color: color,
-                    ...styles.iconText,
-                  }}>
-                  북마크
-                </Text>
               </View>
             ),
           }}
@@ -81,7 +66,7 @@ const TabNavigator = () => {
 
         <Tab.Screen
           name="History"
-          component={HistoryScreen}
+          component={History}
           options={{
             tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
@@ -91,21 +76,13 @@ const TabNavigator = () => {
                   style={styles.icon}
                   color={color}
                 />
-
-                <Text
-                  style={{
-                    color: color,
-                    ...styles.iconText,
-                  }}>
-                  히스토리
-                </Text>
               </View>
             ),
           }}
         />
         <Tab.Screen
           name="Setting"
-          component={SettingScreen}
+          component={Settings}
           options={{
             tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
@@ -115,13 +92,6 @@ const TabNavigator = () => {
                   style={styles.icon}
                   color={color}
                 />
-                <Text
-                  style={{
-                    color: color,
-                    ...styles.iconText,
-                  }}>
-                  설정
-                </Text>
               </View>
             ),
           }}
