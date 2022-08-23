@@ -1,11 +1,14 @@
-import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import React, { ReactNode } from 'react';
+import { StyleSheet, Text, TextStyle } from 'react-native';
 
-function DefaultText(props) {
-  return (
-    <Text style={[styles.defaultFontText, props.style]}>{props.children}</Text>
-  );
+interface Props {
+  children: ReactNode;
+  style?: TextStyle;
 }
+
+const DefaultText = ({ style, children }: Props) => {
+  return <Text style={[styles.defaultFontText, style]}>{children}</Text>;
+};
 
 const styles = StyleSheet.create({
   defaultFontText: {

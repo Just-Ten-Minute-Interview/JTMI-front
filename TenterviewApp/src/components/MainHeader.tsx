@@ -1,10 +1,14 @@
+import { RouteProp, useRoute } from '@react-navigation/native';
 import React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
+import { HomeStackParamList } from '~/screens/HomeStack';
 import DefaultText from './DefaultText';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
-function MainHeader({ route }) {
+const MainHeader = () => {
+  const route = useRoute<RouteProp<HomeStackParamList>>();
+
   return (
     <View style={styles.container}>
       <View style={styles.topWrap}>
@@ -17,12 +21,14 @@ function MainHeader({ route }) {
           </DefaultText>
         </View>
       </View>
-      <View style={styles.filter}>
-        <DefaultText>{route.params?.name}</DefaultText>
+      <View style={styles.filterContainer}>
+        <View style={styles.filterLabel}>
+          <DefaultText style={styles.filterText}>전체</DefaultText>
+        </View>
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -40,15 +46,28 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#263747',
-    fontSize: 32,
+    fontSize: 34,
     fontWeight: 'bold',
   },
   subText: { fontSize: 18, fontWeight: '500', color: '#263747' },
   number: { color: '#00c362' },
-  filter: {
+  filterContainer: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
+  },
+  filterLabel: {
+    paddingLeft: 14,
+    paddingRight: 14,
+    paddingBottom: 10,
+    paddingTop: 10,
+    borderRadius: 32,
+    backgroundColor: '#12B886',
+  },
+  filterText: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 14,
   },
 });
 

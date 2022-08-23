@@ -1,8 +1,11 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+  getFocusedRouteNameFromRoute,
+  NavigationContainer,
+} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, View } from 'react-native';
-import Home from '~/screens/Home';
+import HomeStack from '~/screens/HomeStack';
 import Bookmark from '~/screens/Bookmark';
 import Settings from '~/screens/Settings';
 import History from '~/screens/History';
@@ -17,6 +20,7 @@ const TabNavigator = () => {
       <Tab.Navigator
         screenOptions={{
           tabBarShowLabel: false,
+
           tabBarStyle: {
             position: 'absolute',
             bottom: 15,
@@ -32,9 +36,9 @@ const TabNavigator = () => {
           tabBarInactiveTintColor: '#b0f2dd',
         }}>
         <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
+          name="HomeStack"
+          component={HomeStack}
+          options={({ route }) => ({
             tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
                 <Ionicons
@@ -45,7 +49,18 @@ const TabNavigator = () => {
                 />
               </View>
             ),
-          }}
+            tabBarStyle: {
+              position: 'absolute',
+              bottom: 15,
+              left: 15,
+              right: 15,
+              backgroundColor: '#ffffff',
+              borderRadius: 30,
+              height: 60,
+              ...styles.shadow,
+              display: getRouteName(route),
+            },
+          })}
         />
         <Tab.Screen
           name="Bookmark"
@@ -81,7 +96,7 @@ const TabNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Setting"
+          name="Settings"
           component={Settings}
           options={{
             tabBarIcon: ({ color }) => (
@@ -124,5 +139,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
 });
+
+const getRouteName = route => {
+  const routeName = getFocusedRouteNameFromRoute(route);
+  if (routeName?.includes('Question') || routeName?.includes('Settings')) {
+    return 'none';
+  }
+  return 'flex';
+};
 
 export default TabNavigator;
