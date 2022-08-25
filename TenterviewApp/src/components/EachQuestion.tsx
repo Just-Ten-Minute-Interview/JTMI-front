@@ -1,3 +1,4 @@
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useCallback, useState } from 'react';
 import {
   Dimensions,
@@ -7,12 +8,25 @@ import {
   View,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { HomeStackParamList } from '~/screens/HomeStack';
+import { Problem } from '~/types/problem';
 import DefaultText from './DefaultText';
 
 const { width } = Dimensions.get('window');
 
-const EachQuestion = () => {
+interface Props {
+  item: Problem;
+}
+
+const EachQuestion = ({ item }: Props) => {
   const [bookmark, setBookmark] = useState(false);
+  const navigation = useNavigation<NavigationProp<HomeStackParamList>>();
+
+  const onViewDetail = useCallback(() => {
+    try {
+      navigation.navigate('QuestionDetail', { item });
+    } catch (error) {}
+  }, [navigation, item]);
 
   const toggleBookmark = useCallback(() => {
     if (bookmark) {
@@ -23,19 +37,17 @@ const EachQuestion = () => {
   }, [bookmark]);
 
   return (
-    <View style={styles.questionContainer}>
-      <Pressable style={styles.info}>
+    <Pressable style={styles.questionContainer} onPress={onViewDetail}>
+      <View style={styles.info}>
         <View>
-          <DefaultText style={styles.infoTitle}>
-            Q. 클로저란 무엇인가
-          </DefaultText>
+          <DefaultText style={styles.infoTitle}>Q. {item.title}</DefaultText>
         </View>
-      </Pressable>
-      <Pressable style={styles.category}>
+      </View>
+      <View style={styles.category}>
         <View>
           <DefaultText style={styles.categoryText}>#JS</DefaultText>
         </View>
-      </Pressable>
+      </View>
       <TouchableOpacity style={styles.icon} onPress={toggleBookmark}>
         {bookmark ? (
           <FontAwesome name="star" size={20} color={'#12B886'} />
@@ -43,7 +55,7 @@ const EachQuestion = () => {
           <FontAwesome name="star-o" size={20} color={'#12B886'} />
         )}
       </TouchableOpacity>
-    </View>
+    </Pressable>
   );
 };
 

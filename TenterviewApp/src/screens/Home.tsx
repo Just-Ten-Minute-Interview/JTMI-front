@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 import DefaultText from '~/components/DefaultText';
 
-function Home({ navigation }: any) {
+const Home = ({ navigation }: any) => {
   const onPressCategory = useCallback(
     (name: string) => {
       navigation.push('Question', { name });
@@ -13,7 +13,14 @@ function Home({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.top_section}>
-        <DefaultText style={styles.top_text}>텐터뷰</DefaultText>
+        <View>
+          <DefaultText style={styles.top_small_text}>
+            면접 시간 10분 전 최고의 선택
+          </DefaultText>
+        </View>
+        <View>
+          <DefaultText style={styles.top_text}>텐터뷰</DefaultText>
+        </View>
       </View>
       <View style={styles.main_section}>
         <View style={styles.box}>
@@ -74,7 +81,7 @@ function Home({ navigation }: any) {
       </View>
     </View>
   );
-}
+};
 
 const gap = 20;
 
@@ -87,11 +94,9 @@ const styles = StyleSheet.create({
   },
   top_section: {
     flex: 2,
-    paddingTop: 10,
-    borderBottomLeftRadius: 40,
-    borderBottomRightRadius: 40,
+
     justifyContent: 'center',
-    alignItems: 'center',
+    paddingTop: 15,
   },
   main_section: {
     flex: 8,
@@ -105,8 +110,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingHorizontal: gap / -2,
-    paddingVertical: gap / -2,
+    marginVertical: -(gap / 2),
+    marginHorizontal: -(gap / 2),
   },
 
   sub_box: {
@@ -115,8 +120,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flexGrow: 1,
 
-    marginHorizontal: gap / 2,
     marginVertical: gap / 2,
+    marginHorizontal: gap / 2,
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
@@ -147,8 +152,13 @@ const styles = StyleSheet.create({
   },
 
   top_text: {
-    fontSize: 40,
+    fontSize: 52,
     color: '#12B886',
+    fontWeight: '700',
+  },
+  top_small_text: {
+    fontSize: 16,
+    color: '#000000',
     fontWeight: '600',
   },
 

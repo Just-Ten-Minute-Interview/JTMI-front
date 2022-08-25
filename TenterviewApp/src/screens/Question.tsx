@@ -1,31 +1,26 @@
 import React, { useCallback, useState } from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DefaultText from '~/components/DefaultText';
 import EachQuestion from '~/components/EachQuestion';
 import MainHeader from '~/components/MainHeader';
+import { Problem } from '~/types/problem';
 
 const Question = () => {
   const [questions, setQuestions] = useState([
-    { id: '1' },
-    { id: '2' },
-    { id: '3' },
-    { id: '4' },
-    { id: '5' },
-    { id: '6' },
-    { id: '7' },
-    { id: '8' },
-    { id: '9' },
+    { id: '1', title: '클로저란 무엇인가?' },
+    { id: '2', title: '변수란 무엇인가?' },
+    { id: '3', title: 'var, const, let 차이점은?' },
+    { id: '4', title: '이벤트 버블링이란?' },
+    { id: '5', title: '이벤트 캡쳐란?' },
+    { id: '6', title: '브라우저 렌더링' },
+    { id: '7', title: '테스트테스트테스트테스트' },
+    { id: '8', title: '굿굿굿굿굿굿' },
+    { id: '9', title: 'whwhytwhyhwhywwfsdfsfwefw' },
   ]);
 
-  const renderItem = useCallback(() => {
-    return <EachQuestion />;
+  const renderItem = useCallback(({ item }: { item: Problem }) => {
+    return <EachQuestion item={item} />;
   }, []);
 
   return (

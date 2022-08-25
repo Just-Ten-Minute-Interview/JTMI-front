@@ -1,4 +1,5 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { HomeStackParamList } from '~/screens/HomeStack';
@@ -6,8 +7,10 @@ import DefaultText from './DefaultText';
 
 const { width } = Dimensions.get('window');
 
+type QuestionProps = NativeStackScreenProps<HomeStackParamList, 'Question'>;
+
 const MainHeader = () => {
-  const route = useRoute<RouteProp<HomeStackParamList>>();
+  const route = useRoute<RouteProp<QuestionProps>>();
 
   return (
     <View style={styles.container}>
