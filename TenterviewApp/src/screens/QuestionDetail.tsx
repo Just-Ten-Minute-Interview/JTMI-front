@@ -35,11 +35,7 @@ const copy = `# h1 Heading 8-)
 **This is some bold text!**
 **This is some bold text!**
 **This is some bold text!**
-**This is some bold text!**
-**This is some bold text!**
-**This is some bold text!**
-**This is some bold text!**
-**This is some bold text!**
+
 **This is some bold text!**
 
 This is normal text
@@ -80,10 +76,10 @@ const QuestionDetail = ({ route }: QuestionDetailProps) => {
       <View style={styles.footer_section}>
         <View />
         <View style={styles.button_wrap}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button_left}>
             <Text style={styles.button_text}>이전</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button_right}>
             <Text style={styles.button_text}>다음</Text>
           </TouchableOpacity>
         </View>
@@ -151,21 +147,31 @@ const styles = StyleSheet.create({
   },
   button_wrap: {
     flexDirection: 'row',
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
   },
-  button: {
-    height: 35,
-    paddingHorizontal: 15,
+
+  button_right: {
+    width: 'auto',
+    height: 40,
+    paddingHorizontal: 20,
     position: 'relative',
     backgroundColor: '#12B886',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 10,
+    borderTopRightRadius: 10,
+  },
+  button_left: {
+    width: 'auto',
+    height: 40,
+    paddingHorizontal: 20,
+    position: 'relative',
+    backgroundColor: '#12B886',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderTopLeftRadius: 10,
   },
   button_text: {
     fontSize: 14,
-    color: '#000000',
+    color: '#fff',
   },
 });
 

@@ -8,9 +8,8 @@ import { StyleSheet, View } from 'react-native';
 import HomeStack from '~/screens/HomeStack';
 import Bookmark from '~/screens/Bookmark';
 import Settings from '~/screens/Settings';
-import History from '~/screens/History';
+import Create from '~/screens/History';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createBottomTabNavigator();
 
@@ -80,13 +79,13 @@ const TabNavigator = () => {
         />
 
         <Tab.Screen
-          name="History"
-          component={History}
+          name="Create"
+          component={Create}
           options={{
             tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
-                <FontAwesome
-                  name="history"
+                <Ionicons
+                  name="add-circle"
                   size={25}
                   style={styles.icon}
                   color={color}
@@ -140,7 +139,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const getRouteName = route => {
+const getRouteName = (route: any) => {
   const routeName = getFocusedRouteNameFromRoute(route);
   if (routeName?.includes('Question') || routeName?.includes('Settings')) {
     return 'none';

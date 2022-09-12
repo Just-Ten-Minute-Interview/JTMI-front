@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const History = () => {
+const Create = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>History Screen</Text>
@@ -9,4 +9,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default Create;

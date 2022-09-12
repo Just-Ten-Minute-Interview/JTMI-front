@@ -1,10 +1,12 @@
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useCallback, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DefaultText from '~/components/DefaultText';
 import EachQuestion from '~/components/EachQuestion';
 import MainHeader from '~/components/MainHeader';
 import { Problem } from '~/types/problem';
+import { HomeStackParamList } from './HomeStack';
 
 const Question = () => {
   const [questions, setQuestions] = useState([
@@ -18,10 +20,17 @@ const Question = () => {
     { id: '8', title: '굿굿굿굿굿굿' },
     { id: '9', title: 'whwhytwhyhwhywwfsdfsfwefw' },
   ]);
+  const navigation = useNavigation<NavigationProp<HomeStackParamList>>();
 
   const renderItem = useCallback(({ item }: { item: Problem }) => {
     return <EachQuestion item={item} />;
   }, []);
+
+  const onViewDetail = useCallback(() => {
+    try {
+      navigation.navigate('QuestionDetail', { item: questions[0] });
+    } catch (error) {}
+  }, [navigation, questions]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -36,9 +45,9 @@ const Question = () => {
           showsHorizontalScrollIndicator={false}
         />
       </View>
-      <View style={styles.buttonWrap}>
+      <Pressable style={styles.buttonWrap} onPress={onViewDetail}>
         <DefaultText style={styles.buttonText}>시작하기</DefaultText>
-      </View>
+      </Pressable>
     </SafeAreaView>
   );
 };
