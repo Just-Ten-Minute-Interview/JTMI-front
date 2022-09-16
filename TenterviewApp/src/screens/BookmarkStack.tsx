@@ -1,33 +1,25 @@
 import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from '~/screens/Home';
-import Question from './Question';
+
 import QuestionDetail from './QuestionDetail';
 import { Problem } from '~/types/problem';
+import Bookmark from './Bookmark';
 
-export type HomeStackParamList = {
-  Home: undefined;
-  Question: { name: string };
+export type BookmarkStackParamList = {
+  HomeBookmark: undefined;
   QuestionDetail: { item: Problem };
 };
 
 const Stack = createNativeStackNavigator();
 
-const HomeStack = () => {
+const BookmarkStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="Bookmark">
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="Bookmark"
+        component={Bookmark}
         options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Question"
-        component={Question}
-        options={() => ({
-          headerTitle: '',
-        })}
       />
       <Stack.Screen
         name="QuestionDetail"
@@ -40,4 +32,4 @@ const HomeStack = () => {
   );
 };
 
-export default HomeStack;
+export default BookmarkStack;

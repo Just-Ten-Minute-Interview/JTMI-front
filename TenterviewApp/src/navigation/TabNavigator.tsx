@@ -7,9 +7,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, View } from 'react-native';
 import HomeStack from '~/screens/HomeStack';
 import Bookmark from '~/screens/Bookmark';
-import Settings from '~/screens/Settings';
 import Create from '~/screens/History';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import SettingStack from '~/screens/SettingStack';
+import BookmarkStack from '~/screens/BookmarkStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,14 +22,7 @@ const TabNavigator = () => {
           tabBarShowLabel: false,
 
           tabBarStyle: {
-            position: 'absolute',
-            bottom: 15,
-            left: 15,
-            right: 15,
-            backgroundColor: '#ffffff',
-            borderRadius: 30,
-            height: 60,
-            ...styles.shadow,
+            ...styles.tabBar,
           },
           headerShown: false,
           tabBarActiveTintColor: '#12B886',
@@ -49,21 +43,14 @@ const TabNavigator = () => {
               </View>
             ),
             tabBarStyle: {
-              position: 'absolute',
-              bottom: 15,
-              left: 15,
-              right: 15,
-              backgroundColor: '#ffffff',
-              borderRadius: 30,
-              height: 60,
-              ...styles.shadow,
+              ...styles.tabBar,
               display: getRouteName(route),
             },
           })}
         />
         <Tab.Screen
-          name="Bookmark"
-          component={Bookmark}
+          name="BookmarkStack"
+          component={BookmarkStack}
           options={{
             tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
@@ -95,9 +82,9 @@ const TabNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Settings"
-          component={Settings}
-          options={{
+          name="SettingStack"
+          component={SettingStack}
+          options={({ route }) => ({
             tabBarIcon: ({ color }) => (
               <View style={styles.iconContainer}>
                 <Ionicons
@@ -108,7 +95,11 @@ const TabNavigator = () => {
                 />
               </View>
             ),
-          }}
+            tabBarStyle: {
+              ...styles.tabBar,
+              display: getRouteName(route),
+            },
+          })}
         />
       </Tab.Navigator>
     </NavigationContainer>
@@ -136,6 +127,16 @@ const styles = StyleSheet.create({
   },
   iconText: {
     fontSize: 12,
+  },
+  tabBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#ffffff',
+    height: 60,
+    borderTopWidth: 2,
+    borderColor: 'gray',
   },
 });
 

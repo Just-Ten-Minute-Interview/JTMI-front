@@ -9,7 +9,7 @@ const BookmarkHeader = () => {
     <View style={styles.container}>
       <View style={styles.topWrap}>
         <View>
-          <DefaultText style={styles.title}>나의 리스트</DefaultText>
+          <DefaultText style={styles.title}>마이 리스트</DefaultText>
         </View>
         <View>
           <DefaultText style={styles.subText}>
